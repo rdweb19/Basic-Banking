@@ -76,9 +76,9 @@ WSGI_APPLICATION = 'banksite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bank_site',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
+        'NAME': 'DATABASE_NAME',
+        'USER': 'USER_NAME',
+        'PASSWORD': 'PASSOWORD',
         'HOST': 'localhost',
     }
 }
