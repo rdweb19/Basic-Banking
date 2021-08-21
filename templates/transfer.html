@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <h1 style="margin-top: 25px; color:aliceblue; margin-bottom: 25px;">Transfer money</h1>
+
+    <div class="container">
+
+    <form method="POST" style="color:aliceblue">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="acc_number_1" class="form-label">Sender A/C Number</label>
+          <input type="number" class="form-control" id="acc_number_1" name="acc_number_1" required>
+        </div>
+        <div class="mb-3">
+          <label for="acc_number_2" class="form-label">Receiver A/C Number</label>
+          <input type="number" class="form-control" id="acc_number_2" name="acc_number_2" required>
+        </div>
+        <input type="submit" value="Fetch Details" class="btn btn-primary">
+    </form>
+
+    </div>
+
+    {% if message %}
+
+      <script>
+        alert('{{ message }}');
+      </script>
+
+    {% endif %}
+    
+{% endblock %}

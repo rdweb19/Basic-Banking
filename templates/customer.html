@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+    <h1 style="margin-top: 25px; color:aliceblue; margin-bottom: 25px;">Customer Database</h1>
+
+    <div class="container">
+
+    {% if customers %}
+    <table class="table" style="color:aliceblue">
+        <thead>
+            <tr>
+                <th scope="col">A/C Number</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <th scope="row">{{ customer.acc_number }}</th>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.balance }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+
+        <h3>No Data Found!</h3>
+        
+    {% endif %}
+
+    </div>
+    
+    {% endblock %}
+    

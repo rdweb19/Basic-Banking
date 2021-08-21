@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+    <h1 style="text-align: center; margin-top: 25px; color:aliceblue; margin-bottom: 25px;">Transaction Database</h1>
+
+    <div class="container">
+
+    {% if transactions %}
+    <table class="table" style="color:aliceblue">
+        <thead>
+            <tr>
+                <th scope="col">Timestamp</th>
+                <th scope="col">A/C Number</th>
+                <th scope="col">Transacted Amount</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <th scope="row">{{ transaction.time }}</th>
+                <td>{{ transaction.acc_number_id }}</td>
+                <td>{{ transaction.trans_amount }}</td>
+                <td>{{ transaction.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+
+        <h3>No Data Found!</h3>
+        
+    {% endif %}
+
+    </div>
+    
+{% endblock %}

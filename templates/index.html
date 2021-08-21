@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<img src="{% static 'images/background.jpg' %}" alt="">
+
+{% if message %}
+
+    <script>
+        alert('{{ message }}');
+    </script>
+
+{% endif %}
+    
+{% endblock %}

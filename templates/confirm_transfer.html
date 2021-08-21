@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+
+    <h1 style="margin-top: 25px; color:aliceblue; margin-bottom: 25px;">Kindly Check the Details!</h1>
+
+    <table style="margin-left: auto; margin-right: auto; margin-top: 30px; border-collapse: separate; border-spacing: 100px 0;">
+        <tr>
+            <td>
+                <div class="card bg-light mb-3" style="width: 22rem;">
+                    <div class="card-header">Sender</div>
+                    <div class="card-body">
+                        {% for info in s_data %}
+                        <p class="card-text"><b>A/C Number: </b>{{ info.acc_number }}</p>
+                        <p class="card-text"><b>Name: </b>{{ info.name }}</p>
+                        <p class="card-text"><b>Email: </b>{{ info.email }}</p>
+                        <p class="card-text"><b>Balance: </b>{{ info.balance }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="card bg-light mb-3" style="width: 22rem;">
+                    <div class="card-header">Receiver</div>
+                    <div class="card-body">
+                        {% for info in r_data %}
+                        <p class="card-text"><b>A/C Number: </b>{{ info.acc_number }}</p>
+                        <p class="card-text"><b>Name: </b>{{ info.name }}</p>
+                        <p class="card-text"><b>Email Id: </b>{{ info.email }}</p>
+                        <p class="card-text"><b>Balance: </b>{{ info.balance }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <form method="POST" style="margin-left: 30%; margin-right: 30%; color:aliceblue" action="confirm/">
+        {% csrf_token %}
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label for="amount" class="col-form-label">Amount</label>
+            </div>
+            <div class="col-auto">
+              <input type="number" id="amount" class="form-control" aria-describedby="amountHelp" name="amount" min="1" required>
+            </div>
+            <div class="col-auto">
+              <span id="amountHelp" class="form-text">
+                Please enter carefully
+              </span>
+            </div>
+        </div>
+
+        <br>
+
+        <input type="submit" value="Transfer" class="btn btn-primary" style="margin-left: 40%; margin-right: 40%;">
+
+        <br>
+
+    </form>
+
+</div>
+
+{% if message %}
+
+    <script>
+        alert('{{ message }}');
+    </script>
+
+{% endif %}
+
+{% endblock %}
